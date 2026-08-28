@@ -9,8 +9,23 @@
  * 
  * Task:
  * 
- * 1. dentify all values that should be stored as variables.
+ * 1. Identify all values that should be stored as variables.
  * 2. Determine the most appropriate data type for each variable.
  * 3. Create the variable declarations using TypeScript.
  * 4. Display the student data using console.log.
  */
+const studentName: string = "Nadia Putri";
+const studentID: string = "ST2026045";
+const assignmentScore: number = 88.5;
+const midtermScore: number = 84;
+const finalScore: number = 91.5;
+const attendanceScore: number = 100;
+const extracurricularActivities: boolean = true;
+
+console.log("studentName:", studentName);
+console.log("studentID:", studentID);
+console.log("assignmentScore:", assignmentScore);
+console.log("midtermScore:", midtermScore);
+console.log("finalScore:", finalScore);
+console.log("attendanceScore:", attendanceScore);
+console.log("extracurricularActivities:", extracurricularActivities);
