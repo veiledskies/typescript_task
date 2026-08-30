@@ -11,22 +11,22 @@
  */
 const student1: { studentID: string; fullName: string; age: number; isActive: boolean } = {
   studentID: "ST2026045",
-  fullName: "Nadia Putri",
-  age: 18,
+  fullName: "Naufal A. R. M.",
+  age: 16,
   isActive: true,
 };
 
 const student2: { studentID: string; fullName: string; age: number; isActive: boolean } = {
   studentID: "ST2026046",
-  fullName: "Budi Santoso",
-  age: 19,
+  fullName: "Dimas Febri A.",
+  age: 15,
   isActive: true,
 };
 
 const student3: { studentID: string; fullName: string; age: number; isActive: boolean } = {
   studentID: "ST2026047",
-  fullName: "Siti Nurhaliza",
-  age: 17,
+  fullName: "Azura Junaidi",
+  age: 14,
   isActive: false,
 };
 
