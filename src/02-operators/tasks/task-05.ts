@@ -34,28 +34,18 @@
  * - Display whether the student is accepted.
  */
 
-const studentName: string = "Azura Junaidi";
-const GPA: number = 3.79;
-const FamilyIncome: number = 3900000;
-const CompetitionCounts: number = 4;
-const hasDisciplinaryRecord: boolean = false; 
-const isDocumentsComplete: boolean = true;    
+const studentName: string = "Alya Putri";
+const gpa: number = 3.89;
+const familyIncome: number = 4200000;
+const competitionCount: number = 4;
+const hasDisciplinaryRecord: boolean = false;
+const documentsComplete: boolean = true;
 
-let totalBudget: number = 500000000;
-let isAccepted: boolean = false;
+const scholarshipAmount: number = (gpa >= 3.75 && familyIncome < 5000000 && competitionCount >= 3 && !hasDisciplinaryRecord && documentsComplete) ? 12000000 : 0;
+const totalScholarshipBudget: number = 500000000;
+const remainingBudget: number = totalScholarshipBudget - scholarshipAmount;
 
-if (GPA >= 3.75 && FamilyIncome < 5000000 && CompetitionCounts >= 3 && hasDisciplinaryRecord === false && isDocumentsComplete === true) {
-    isAccepted = true;
-} else {
-    isAccepted = false;
-}
-
-const scholarshipAmount: number = isAccepted ? 12000000 : 0;
-
-const remainingBudget: number = totalBudget - scholarshipAmount;
-
-// Display results
 console.log("Student Name: " + studentName);
-console.log("Is Accepted: " + isAccepted);
+console.log("Is Accepted: " + (scholarshipAmount > 0));
 console.log("Scholarship Amount: Rp" + scholarshipAmount);
 console.log("Remaining Budget: Rp" + remainingBudget);

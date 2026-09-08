@@ -10,47 +10,53 @@
  * display the attendance data using console.log.
  */
 
-type Attendance = {
-  employeeId: string;
-  name: string;
-  date: string;
-  checkIn: string;
-  checkOut: string;
-  workHours: number;
-  isPresent: boolean;
+type AttendanceRecord = {
+    employeeId: number;
+    employeeName: string;
+    date: string;
+    checkInTime: string;
+    checkOutTime: string;
+    totalWorkingHours: number;
+    isPresent: boolean;
 };
 
-const record1: Attendance = {
-  employeeId: "EMP-010",
-  name: "Naufal Abyan Rafa Montesky",
-  date: "2026-08-28",
-  checkIn: "08:00",
-  checkOut: "17:00",
-  workHours: 9,
-  isPresent: true
-};
+const attendanceData: AttendanceRecord[] = [
+    {
+        employeeId: 1,
+        employeeName: "Jane Parker",
+        date: "2026-06-01",
+        checkInTime: "09:00",
+        checkOutTime: "17:00",
+        totalWorkingHours: 8,
+        isPresent: true,
+    },
+    {
+        employeeId: 2,
+        employeeName: "Alice Smith",
+        date: "2026-06-01",
+        checkInTime: "08:30",
+        checkOutTime: "16:30",
+        totalWorkingHours: 8,
+        isPresent: true,
+    },
+    {
+        employeeId: 3,
+        employeeName: "Naufal Rahman",
+        date: "2026-06-01",
+        checkInTime: "10:00",
+        checkOutTime: "18:00",
+        totalWorkingHours: 8,
+        isPresent: true,
+    }
+];
 
-const record2: Attendance = {
-  employeeId: "EMP-011",
-  name: "Dimas Febri",
-  date: "2026-08-28",
-  checkIn: "08:15",
-  checkOut: "16:45",
-  workHours: 8.5,
-  isPresent: true
-};
-
-const record3: Attendance = {
-  employeeId: "EMP-012",
-  name: "Azura Junaidi",
-  date: "2026-08-28",
-  checkIn: "00:00",
-  checkOut: "00:00",
-  workHours: 0,
-  isPresent: false
-};
-
-console.log("Employee Attendance Data");
-console.log(record1);
-console.log(record2);
-console.log(record3);
+attendanceData.forEach(record => {
+    console.log("Employee ID: " + record.employeeId);
+    console.log("Employee Name: " + record.employeeName);
+    console.log("Date: " + record.date);
+    console.log("Check-in Time: " + record.checkInTime);
+    console.log("Check-out Time: " + record.checkOutTime);
+    console.log("Total Working Hours: " + record.totalWorkingHours);
+    console.log("Is Present: " + record.isPresent);
+    console.log("---");
+});

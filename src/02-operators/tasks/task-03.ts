@@ -19,7 +19,7 @@
  */
 
 const Employee: string = "Naufal";
-const BasicSalary: number = 5000000
+const BasicSalary: number = 6000000
 const OvertimeHours: number = 12
 const OvertimeRate: number = 50000
     

@@ -13,74 +13,80 @@
  */
 
 type Student = {
-  id: string;
-  name: string;
-  grade: number;
+    studentId: string;
+    fullName: string;
+    gradeLevel: string;
 };
-
 type Course = {
-  id: string;
-  title: string;
-  instructor: string;
-  hours: number;
+    courseId: string;
+    courseTitle: string;
+    instructorName: string;
+    totalLearningHours: number;
 };
 
 type Registration = {
-  student: Student;
-  course: Course;
-  date: string;
-  isPaid: boolean;
+    student: Student;
+    course: Course;
+    registrationDate: string;
+    isPaymentCompleted: boolean;
 };
 
-const reg1: Registration = {
-  student: {
-    id: "ST-01",
-    name: "Naufal Abyan Rafa Montesky",
-    grade: 10
-  },
-  course: {
-    id: "PROG-101",
-    title: "Intro to TypeScript",
-    instructor: "Teacher Whyna",
-    hours: 24
-  },
-  date: "2026-08-25",
-  isPaid: true
-};
+const registrations: Registration[] = [
+    {
+        student: {
+            studentId: "S001",
+            fullName: "Febrianto Pratama",
+            gradeLevel: "10th Grade",
+        },
+        course: {
+            courseId: "C001",
+            courseTitle: "Introduction to TypeScript",
+            instructorName: "John Doe",
+            totalLearningHours: 24
+        },
+        registrationDate: "2026-10-01",
+        isPaymentCompleted: true
+    },
+    {
+        student: {
+            studentId: "S002",
+            fullName: "Naufal Rahman",
+            gradeLevel: "11th Grade",
+        },
+        course: {
+            courseId: "C002",
+            courseTitle: "Advanced JavaScript",
+            instructorName: "Jane Doe",
+            totalLearningHours: 30
+        },
+        registrationDate: "2026-10-02",
+        isPaymentCompleted: false
+    },
+    {
+        student: {
+            studentId: "S003",
+            fullName: "Wahyu Santoso",
+            gradeLevel: "12th Grade",
+        },
+        course: {
+            courseId: "C003",
+            courseTitle: "React Development",
+            instructorName: "Jonas Smith",
+            totalLearningHours: 40
+        },
+        registrationDate: "2026-10-03",
+        isPaymentCompleted: true
+    }
+];
 
-const reg2: Registration = {
-  student: {
-    id: "ST-02",
-    name: "Dimas Febri A",
-    grade: 11
-  },
-  course: {
-    id: "PROG-102",
-    title: "Typescript Operators",
-    instructor: "Teacher Whyna",
-    hours: 40
-  },
-  date: "2026-08-27",
-  isPaid: false
-};
-
-const reg3: Registration = {
-  student: {
-    id: "ST-03",
-    name: "Azura Junaidi",
-    grade: 12
-  },
-  course: {
-    id: "PROG-101",
-    title: "Typescript Conditions & Functions",
-    instructor: "Teacher Whyna",
-    hours: 24
-  },
-  date: "2026-08-28",
-  isPaid: true
-};
-
-console.log("Course Registrations");
-console.log(reg1);
-console.log(reg2);
-console.log(reg3);
+registrations.forEach(registration => {
+    console.log("Student ID: " + registration.student.studentId);
+    console.log("Full Name: " + registration.student.fullName);
+    console.log("Grade Level: " + registration.student.gradeLevel);
+    console.log("Course ID: " + registration.course.courseId);
+    console.log("Course Title: " + registration.course.courseTitle);
+    console.log("Instructor Name: " + registration.course.instructorName);
+    console.log("Total Learning Hours: " + registration.course.totalLearningHours);
+    console.log("Registration Date: " + registration.registrationDate);
+    console.log("Is Payment Completed: " + registration.isPaymentCompleted);
+});

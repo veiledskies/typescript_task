@@ -16,18 +16,16 @@
  */
 
 type Participant = {
-  id: string;
-  name: string;
-  age: number;
-  hasPaid: boolean;
+    studentId: string;
+    name: string;
+    age: number;
+    hasPaid: boolean;
 };
 
 const participants: Participant[] = [
-  { id: "ST001", name: "Ahmad Fauzi", age: 16, hasPaid: true },
-  { id: "ST002", name: "Siti Nurhaliza", age: 17, hasPaid: false },
-  { id: "ST003", name: "Budi Santoso", age: 16, hasPaid: true }
+    { studentId: "ST001", name: "Ahmad Fauzi", age: 16, hasPaid: true },
+    { studentId: "ST002", name: "Siti Nurhaliza", age: 17, hasPaid: false },
+    { studentId: "ST003", name: "Budi Santoso", age: 16, hasPaid: true },
 ];
 
-console.log("Bootcamp Participants");
-console.log(participants);
-9
+console.log("Bootcamp Participants", participants);

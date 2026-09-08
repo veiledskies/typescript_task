@@ -11,47 +11,52 @@
  */
 
 type Product = {
-  productCode: string;
-  productName: string;
-  price: number;
-  stock: number;
-  weight: number;
-  rating: number;
-  isDiscounted: boolean;
+    productCode: string;
+    productName: string;
+    sellingPrice: number;
+    stockQuantity: number;
+    productWeight: number;
+    averageCustomerRating: number;
+    isDiscounted: boolean;
 };
 
-const product1: Product = {
-  productCode: "PROD-101",
-  productName: "Wireless Mouse Logitech",
-  price: 250000,
-  stock: 45,
-  weight: 0.15,
-  rating: 4.8,
-  isDiscounted: true
-};
+const products: Product[] = [
+    {
+        productCode: "P001",
+        productName: "Wireless Headphones",
+        sellingPrice: 99.99,
+        stockQuantity: 50,
+        productWeight: 0.5,
+        averageCustomerRating: 4.5,
+        isDiscounted: true,
+    },
+    {
+        productCode: "P002",
+        productName: "Smartphone",
+        sellingPrice: 699.99,
+        stockQuantity: 30,
+        productWeight: 0.3,
+        averageCustomerRating: 4.7,
+        isDiscounted: false,
+    },
+    {
+        productCode: "P003",
+        productName: "Laptop",
+        sellingPrice: 1299.99,
+        stockQuantity: 20,
+        productWeight: 1.5,
+        averageCustomerRating: 4.8,
+        isDiscounted: true,
+    }
+];
 
-const product2: Product = {
-  productCode: "PROD-102",
-  productName: "Mechanical Keyboard RGB",
-  price: 850000,
-  stock: 18,
-  weight: 0.95,
-  rating: 4.7,
-  isDiscounted: false
-};
-
-const product3: Product = {
-  productCode: "PROD-103",
-  productName: "USB-C Hub 6-in-1",
-  price: 350000,
-  stock: 0,
-  weight: 0.08,
-  rating: 4.5,
-  isDiscounted: true
-};
-
-console.log("Marketplace Product Data ");
-console.log(product1);
-console.log(product2);
-console.log(product3);
-6
+products.forEach(product => {
+    console.log("Product Code: " + product.productCode);
+    console.log("Product Name: " + product.productName);
+    console.log("Selling Price: $" + product.sellingPrice.toFixed(2));
+    console.log("Stock Quantity: " + product.stockQuantity);
+    console.log("Product Weight: " + product.productWeight + " kg");
+    console.log("Average Customer Rating: " + product.averageCustomerRating);
+    console.log("Is Discounted: " + product.isDiscounted);
+    console.log("---");
+});
