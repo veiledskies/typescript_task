@@ -92,3 +92,38 @@ const enrollments = [
         duration: 20
     }
 ];
+
+function countTotalEnrollments() {
+    return enrollments.length;
+}
+
+function countCompletedEnrollments() {
+    return enrollments.filter(enrollment => enrollment.completed).length;
+}
+
+function countIncompleteEnrollments() {
+    return enrollments.filter(enrollment => !enrollment.completed).length;
+}
+
+function calculateCompletionPercentage() {
+    const total = countTotalEnrollments();
+    const completed = countCompletedEnrollments();
+    return (completed / total) * 100;
+}
+
+function getHighestScore() {
+    return Math.max(...enrollments.map(enrollment => enrollment.score));
+}
+
+function getLowestScore() {
+    return Math.min(...enrollments.map(enrollment => enrollment.score));
+}
+
+function calculateAverageScore() {
+    const totalScore = enrollments.reduce((sum, enrollment) => sum + enrollment.score, 0);
+    return totalScore / countTotalEnrollments();
+}
+
+function countStudentsWithPassingScores() {
+    return enrollments.filter(enrollment => enrollment.score >= 75).length;
+}

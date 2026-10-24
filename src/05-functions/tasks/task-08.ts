@@ -54,3 +54,44 @@ const submissions = [
         score: 96
     }
 ];
+
+function countSubmittedAssignments() {
+    return submissions.filter(submission => submission.submitted).length;
+}
+
+function countMissingAssignments() {
+    return submissions.filter(submission => !submission.submitted).length;
+}
+
+function countPassedStudents() {
+    return submissions.filter(submission => submission.submitted && submission.score >= 75).length;
+}
+
+function countStudentsRequiringRevision() {
+    return submissions.filter(submission => submission.submitted && submission.score < 75).length;
+}
+
+function getAverageScore() {
+    const totalScore = submissions.reduce((sum, submission) => sum + submission.score, 0);
+    return totalScore / submissions.length;
+}
+
+function getHighestScore() {
+    return Math.max(...submissions.map(submission => submission.score));
+}
+
+function getLowestScore() {
+    return Math.min(...submissions.map(submission => submission.score));
+}
+
+function displayReport() {
+    console.log("Assignment Report");
+    console.log(`Total Students: ${submissions.length}`);
+    console.log(`Submitted Assignments: ${countSubmittedAssignments()}`);
+    console.log(`Missing Assignments: ${countMissingAssignments()}`);
+    console.log(`Passed Students: ${countPassedStudents()}`);
+    console.log(`Students Requiring Revision: ${countStudentsRequiringRevision()}`);
+    console.log(`Average Score: ${getAverageScore().toFixed(2)}`);
+    console.log(`Highest Score: ${getHighestScore()}`);
+    console.log(`Lowest Score: ${getLowestScore()}`);
+}
