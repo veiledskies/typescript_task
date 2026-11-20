@@ -22,6 +22,9 @@
  * - 1 void function to display the report.
  * 
  */
+
+
+
 const submissions = [
     {
         student: "Alya",
@@ -55,43 +58,98 @@ const submissions = [
     }
 ];
 
-function countSubmittedAssignments() {
-    return submissions.filter(submission => submission.submitted).length;
+function countSubmittedAssignments(): number {
+    let count = 0;
+
+    for (let i = 0; i < submissions.length; i++) {
+        if (submissions[i].submitted == true) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countMissingAssignments() {
-    return submissions.filter(submission => !submission.submitted).length;
+function countMissingAssignments(): number {
+    let count = 0;
+
+    for (let i = 0; i < submissions.length; i++) {
+        if (submissions[i].submitted == false) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countPassedStudents() {
-    return submissions.filter(submission => submission.submitted && submission.score >= 75).length;
+function countPassedStudents(): number {
+    let count = 0;
+
+    for (let i = 0; i < submissions.length; i++) {
+        if (submissions[i].submitted == true && submissions[i].score >= 75) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countStudentsRequiringRevision() {
-    return submissions.filter(submission => submission.submitted && submission.score < 75).length;
+function countStudentsRequiringRevision(): number {
+    let count = 0;
+
+    for (let i = 0; i < submissions.length; i++) {
+        if (submissions[i].submitted == true && submissions[i].score < 75) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function getAverageScore() {
-    const totalScore = submissions.reduce((sum, submission) => sum + submission.score, 0);
-    return totalScore / submissions.length;
+function getAverageScore(): number {
+    let total = 0;
+
+    for (let i = 0; i < submissions.length; i++) {
+        total = total + submissions[i].score;
+    }
+
+    return total / submissions.length;
 }
 
-function getHighestScore() {
-    return Math.max(...submissions.map(submission => submission.score));
+function getHighestScore(): number {
+    let highest = submissions[0].score;
+
+    for (let i = 0; i < submissions.length; i++) {
+        if (submissions[i].score > highest) {
+            highest = submissions[i].score;
+        }
+    }
+
+    return highest;
 }
 
-function getLowestScore() {
-    return Math.min(...submissions.map(submission => submission.score));
+function getLowestScore(): number {
+    let lowest = submissions[0].score;
+
+    for (let i = 0; i < submissions.length; i++) {
+        if (submissions[i].score < lowest) {
+            lowest = submissions[i].score;
+        }
+    }
+
+    return lowest;
 }
 
-function displayReport() {
+function displayReport(): void {
     console.log("Assignment Report");
-    console.log(`Total Students: ${submissions.length}`);
-    console.log(`Submitted Assignments: ${countSubmittedAssignments()}`);
-    console.log(`Missing Assignments: ${countMissingAssignments()}`);
-    console.log(`Passed Students: ${countPassedStudents()}`);
-    console.log(`Students Requiring Revision: ${countStudentsRequiringRevision()}`);
-    console.log(`Average Score: ${getAverageScore().toFixed(2)}`);
-    console.log(`Highest Score: ${getHighestScore()}`);
-    console.log(`Lowest Score: ${getLowestScore()}`);
+    console.log("Total Students: " + submissions.length);
+    console.log("Submitted Assignments: " + countSubmittedAssignments());
+    console.log("Missing Assignments: " + countMissingAssignments());
+    console.log("Passed Students: " + countPassedStudents());
+    console.log("Students Requiring Revision: " + countStudentsRequiringRevision());
+    console.log("Average Score: " + getAverageScore().toFixed(2));
+    console.log("Highest Score: " + getHighestScore());
+    console.log("Lowest Score: " + getLowestScore());
 }
+
+displayReport();

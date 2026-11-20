@@ -21,6 +21,7 @@
  * - printHospitalReport() must only display results.
  * - No duplicated calculations.
  */
+
 const patients = [
     {
         id: "PT001",
@@ -64,50 +65,111 @@ const patients = [
     }
 ];
 
-function countAdmittedPatients() {
-    return patients.filter(patient => patient.admitted).length;
+function countAdmittedPatients(): number {
+    let count = 0;
+
+    for (let i = 0; i < patients.length; i++) {
+        if (patients[i].admitted == true) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countDischargedPatients() {
-    return patients.filter(patient => !patient.admitted).length;
+function countDischargedPatients(): number {
+    let count = 0;
+
+    for (let i = 0; i < patients.length; i++) {
+        if (patients[i].admitted == false) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countPatientsByDepartment(department: string) {
-    return patients.filter(patient => patient.department === department).length;
+function countPatientsByDepartment(department: string): number {
+    let count = 0;
+
+    for (let i = 0; i < patients.length; i++) {
+        if (patients[i].department == department) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function getHighestBill() {
-    return Math.max(...patients.map(patient => patient.bill));
+function getHighestBill(): number {
+    let highest = patients[0].bill;
+
+    for (let i = 0; i < patients.length; i++) {
+        if (patients[i].bill > highest) {
+            highest = patients[i].bill;
+        }
+    }
+
+    return highest;
 }
 
-function getLowestBill() {
-    return Math.min(...patients.map(patient => patient.bill));
+function getLowestBill(): number {
+    let lowest = patients[0].bill;
+
+    for (let i = 0; i < patients.length; i++) {
+        if (patients[i].bill < lowest) {
+            lowest = patients[i].bill;
+        }
+    }
+
+    return lowest;
 }
 
-function getAverageBill() {
-    const totalBill = patients.reduce((sum, patient) => sum + patient.bill, 0);
-    return totalBill / patients.length;
+function getAverageBill(): number {
+    let total = 0;
+
+    for (let i = 0; i < patients.length; i++) {
+        total = total + patients[i].bill;
+    }
+
+    return total / patients.length;
 }
 
-function getTotalRevenue() {
-    return patients.reduce((sum, patient) => sum + patient.bill, 0);
+function getTotalRevenue(): number {
+    let total = 0;
+
+    for (let i = 0; i < patients.length; i++) {
+        total = total + patients[i].bill;
+    }
+
+    return total;
 }
 
-function getAdmittedPatientNames() {
-    return patients.filter(patient => patient.admitted).map(patient => patient.name);
+function getAdmittedPatientNames(): string[] {
+    let names: string[] = [];
+
+    for (let i = 0; i < patients.length; i++) {
+        if (patients[i].admitted == true) {
+            names.push(patients[i].name);
+        }
+    }
+
+    return names;
 }
 
-function printHospitalReport() {
+function printHospitalReport(): void {
     console.log("Hospital Report:");
-    console.log(`Total patients: ${patients.length}`);
-    console.log(`Total admitted patients: ${countAdmittedPatients()}`);
-    console.log(`Total discharged patients: ${countDischargedPatients()}`);
-    console.log(`Pediatrics patients: ${countPatientsByDepartment("Pediatrics")}`);
-    console.log(`Cardiology patients: ${countPatientsByDepartment("Cardiology")}`);
-    console.log(`Orthopedics patients: ${countPatientsByDepartment("Orthopedics")}`);
-    console.log(`Highest hospital bill: ${getHighestBill()}`);
-    console.log(`Lowest hospital bill: ${getLowestBill()}`);
-    console.log(`Average hospital bill: ${getAverageBill()}`);
-    console.log(`Total hospital revenue: ${getTotalRevenue()}`);
-    console.log(`Names of admitted patients: ${getAdmittedPatientNames().join(", ")}`);
+    console.log("Total patients: " + patients.length);
+    console.log("Total admitted patients: " + countAdmittedPatients());
+    console.log("Total discharged patients: " + countDischargedPatients());
+    console.log("Pediatrics patients: " + countPatientsByDepartment("Pediatrics"));
+    console.log("Cardiology patients: " + countPatientsByDepartment("Cardiology"));
+    console.log("Orthopedics patients: " + countPatientsByDepartment("Orthopedics"));
+    console.log("Highest hospital bill: " + getHighestBill());
+    console.log("Lowest hospital bill: " + getLowestBill());
+    console.log("Average hospital bill: " + getAverageBill());
+    console.log("Total hospital revenue: " + getTotalRevenue());
+    console.log("Names of admitted patients: " + getAdmittedPatientNames());
 }
+
+printHospitalReport();

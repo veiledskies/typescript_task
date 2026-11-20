@@ -16,59 +16,35 @@
  * 4. Create function to return number of passing students.
  */
 
-const scores = [
-  82,
-  91,
-  76,
-  88,
-  69,
-  94,
-  73,
-  85,
-  79,
-  97
+
+const attendances = [
+    { name: "Alya", present: true },
+    { name: "Budi", present: false },
+    { name: "Citra", present: true },
+    { name: "Dimas", present: true },
+    { name: "Eka", present: false }
 ];
 
-function findHighestScore(scores: number[]): number {
-  let highest = scores[0];
-  for (const score of scores) {
-    if (score > highest) {
-      highest = score;
+function printAttendanceReport(attendances: any[]): void {
+    let totalPresent = 0;
+    let totalAbsent = 0;
+    let absentStudents = [];
+
+    for (let i = 0; i < attendances.length; i++) {
+
+        if (attendances[i].present == true) {
+            totalPresent++;
+        } else {
+            totalAbsent++;
+            absentStudents.push(attendances[i].name);
+        }
+
     }
-  }
-  return highest;
+
+    console.log("Attendance Report");
+    console.log("Total Present: " + totalPresent);
+    console.log("Total Absent: " + totalAbsent);
+    console.log("Absent Students: " + absentStudents);
 }
 
-function findLowestScore(scores: number[]): number {
-  let lowest = scores[0];
-  for (const score of scores) {
-    if (score < lowest) {
-      lowest = score;
-    }
-  }
-  return lowest;
-}
-
-function calculateAverage(scores: number[]): number {
-  const total = scores.reduce((sum, score) => sum + score, 0);
-  return total / scores.length;
-}
-
-function countPassedStudents(scores: number[]): number {
-  let count = 0;
-  for (const score of scores) {
-    if (score >= 75) {
-      count++;
-    }
-  }
-  return count;
-}
-
-function displayReport(scores: number[]): void {
-  console.log(`Highest Score: ${findHighestScore(scores)}`);
-  console.log(`Lowest Score: ${findLowestScore(scores)}`);
-  console.log(`Average Score: ${calculateAverage(scores)}`);
-  console.log(`Number of Passed Students: ${countPassedStudents(scores)}`);
-}
-
-displayReport(scores);
+printAttendanceReport(attendances);

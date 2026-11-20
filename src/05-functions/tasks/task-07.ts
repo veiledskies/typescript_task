@@ -12,51 +12,77 @@
  */
 
 const students = [
-  {
-    name: "Alya",
-    major: "Software Engineering",
-    active: true
-  },
-  {
-    name: "Budi",
-    major: "Networking",
-    active: false
-  },
-  {
-    name: "Citra",
-    major: "Software Engineering",
-    active: true
-  },
-  {
-    name: "Dimas",
-    major: "Multimedia",
-    active: true
-  },
-  {
-    name: "Eka",
-    major: "Networking",
-    active: false
-  }
+    {
+        name: "Alya",
+        major: "Software Engineering",
+        active: true
+    },
+    {
+        name: "Budi",
+        major: "Networking",
+        active: false
+    },
+    {
+        name: "Citra",
+        major: "Software Engineering",
+        active: true
+    },
+    {
+        name: "Dimas",
+        major: "Multimedia",
+        active: true
+    },
+    {
+        name: "Eka",
+        major: "Networking",
+        active: false
+    }
 ];
 
-function countActiveStudents(){
-  return students.filter(student => student.active).length;
+function countActiveStudents(): number {
+    let count = 0;
+
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].active == true) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countInactiveStudents(){
-  return students.filter(student => !student.active).length;
+function countInactiveStudents(): number {
+    let count = 0;
+
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].active == false) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countStudentsByMajor(major: string){
-  return students.filter(student => student.major === major).length;
+function countStudentsByMajor(major: string): number {
+    let count = 0;
+
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].major == major) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function printEnrollmentReport(){
-  console.log("Enrollment Report:");
-  console.log(`Total students: ${students.length}`);
-  console.log(`Active students: ${countActiveStudents()}`);
-  console.log(`Inactive students: ${countInactiveStudents()}`);
-  console.log(`Software Engineering students: ${countStudentsByMajor("Software Engineering")}`);
-  console.log(`Networking students: ${countStudentsByMajor("Networking")}`);
-  console.log(`Multimedia students: ${countStudentsByMajor("Multimedia")}`);
+function printEnrollmentReport(): void {
+    console.log("Enrollment Report:");
+    console.log("Total students: " + students.length);
+    console.log("Active students: " + countActiveStudents());
+    console.log("Inactive students: " + countInactiveStudents());
+    console.log("Software Engineering students: " + countStudentsByMajor("Software Engineering"));
+    console.log("Networking students: " + countStudentsByMajor("Networking"));
+    console.log("Multimedia students: " + countStudentsByMajor("Multimedia"));
 }
+
+printEnrollmentReport();

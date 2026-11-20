@@ -13,6 +13,7 @@
  * - Display the report inside the function.
  * - The function should not return any value.
  */
+
 const attendances = [
     { name: "Alya", present: true },
     { name: "Budi", present: false },
@@ -21,27 +22,26 @@ const attendances = [
     { name: "Eka", present: false }
 ];
 
-function printAttendanceReport(attendances: { name: string; present: boolean }[]): void {
+function printAttendanceReport(attendances: any[]): void {
     let totalPresent = 0;
     let totalAbsent = 0;
-    const absentStudents: string[] = [];
+    let absentStudents = [];
 
-    for (const attendance of attendances) {
-        if (attendance.present) {
+    for (let i = 0; i < attendances.length; i++) {
+
+        if (attendances[i].present == true) {
             totalPresent++;
         } else {
             totalAbsent++;
-            absentStudents.push(attendance.name);
+            absentStudents.push(attendances[i].name);
         }
+
     }
 
-    console.log("Attendance Report:");
-    console.log(`Total Present: ${totalPresent}`);
-    console.log(`Total Absent: ${totalAbsent}`);
-    console.log("Absent Students:");
-    for (const student of absentStudents) {
-        console.log(` - ${student}`);
-    }
+    console.log("Attendance Report");
+    console.log("Total Present: " + totalPresent);
+    console.log("Total Absent: " + totalAbsent);
+    console.log("Absent Students: " + absentStudents);
 }
 
 printAttendanceReport(attendances);

@@ -34,6 +34,7 @@
  * Reuse existing functions whenever possible
  */
 
+
 const enrollments = [
     {
         student: "Alya",
@@ -93,37 +94,169 @@ const enrollments = [
     }
 ];
 
-function countTotalEnrollments() {
+function countTotalEnrollments(): number {
     return enrollments.length;
 }
 
-function countCompletedEnrollments() {
-    return enrollments.filter(enrollment => enrollment.completed).length;
+function countCompletedEnrollments(): number {
+    let count = 0;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        if (enrollments[i].completed == true) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function countIncompleteEnrollments() {
-    return enrollments.filter(enrollment => !enrollment.completed).length;
+function countIncompleteEnrollments(): number {
+    let count = 0;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        if (enrollments[i].completed == false) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-function calculateCompletionPercentage() {
-    const total = countTotalEnrollments();
-    const completed = countCompletedEnrollments();
-    return (completed / total) * 100;
+function calculateCompletionPercentage(): number {
+    return (countCompletedEnrollments() / countTotalEnrollments()) * 100;
 }
 
-function getHighestScore() {
-    return Math.max(...enrollments.map(enrollment => enrollment.score));
+function getHighestScore(): number {
+    let highest = enrollments[0].score;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        if (enrollments[i].score > highest) {
+            highest = enrollments[i].score;
+        }
+    }
+
+    return highest;
 }
 
-function getLowestScore() {
-    return Math.min(...enrollments.map(enrollment => enrollment.score));
+function getLowestScore(): number {
+    let lowest = enrollments[0].score;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        if (enrollments[i].score < lowest) {
+            lowest = enrollments[i].score;
+        }
+    }
+
+    return lowest;
 }
 
-function calculateAverageScore() {
-    const totalScore = enrollments.reduce((sum, enrollment) => sum + enrollment.score, 0);
-    return totalScore / countTotalEnrollments();
+function calculateAverageScore(): number {
+    let total = 0;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        total = total + enrollments[i].score;
+    }
+
+    return total / countTotalEnrollments();
 }
 
-function countStudentsWithPassingScores() {
-    return enrollments.filter(enrollment => enrollment.score >= 75).length;
+function countStudentsWithPassingScores(): number {
+    let count = 0;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        if (enrollments[i].score >= 75) {
+            count++;
+        }
+    }
+
+    return count;
 }
+
+function countStudentsByCourse(course: string): number {
+    let count = 0;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        if (enrollments[i].course == course) {
+            count++;
+        }
+    }
+
+    return count;
+}
+
+function calculateAverageScoreByCourse(course: string): number {
+    let total = 0;
+    let count = 0;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        if (enrollments[i].course == course) {
+            total = total + enrollments[i].score;
+            count++;
+        }
+    }
+
+    if (count == 0) {
+        return 0;
+    }
+
+    return total / count;
+}
+
+function calculateTotalLearningHours(): number {
+    let total = 0;
+
+    for (let i = 0; i < enrollments.length; i++) {
+        total = total + enrollments[i].duration;
+    }
+
+    return total;
+}
+
+function calculateAverageLearningDuration(): number {
+    return calculateTotalLearningHours() / countTotalEnrollments();
+}
+
+function printCompletionStatistics(): void {
+    console.log("Completion Statistics:");
+    console.log("Total Enrollments: " + countTotalEnrollments());
+    console.log("Completed: " + countCompletedEnrollments());
+    console.log("Incomplete: " + countIncompleteEnrollments());
+    console.log("Completion Percentage: " + calculateCompletionPercentage() + "%");
+}
+
+function printAcademicStatistics(): void {
+    console.log("Academic Statistics:");
+    console.log("Highest Score: " + getHighestScore());
+    console.log("Lowest Score: " + getLowestScore());
+    console.log("Average Score: " + calculateAverageScore());
+    console.log("Passing Students: " + countStudentsWithPassingScores());
+}
+
+function printCourseStatistics(): void {
+    console.log("Course Statistics:");
+    console.log("TypeScript Students: " + countStudentsByCourse("TypeScript"));
+    console.log("TypeScript Average: " + calculateAverageScoreByCourse("TypeScript"));
+
+    console.log("Database Students: " + countStudentsByCourse("Database"));
+    console.log("Database Average: " + calculateAverageScoreByCourse("Database"));
+
+    console.log("Backend Students: " + countStudentsByCourse("Backend"));
+    console.log("Backend Average: " + calculateAverageScoreByCourse("Backend"));
+}
+
+function printLearningStatistics(): void {
+    console.log("Learning Statistics:");
+    console.log("Total Learning Hours: " + calculateTotalLearningHours());
+    console.log("Average Learning Duration: " + calculateAverageLearningDuration());
+}
+
+function printDashboard(): void {
+    console.log("===== ACADEMY DASHBOARD =====");
+
+    printCompletionStatistics();
+    printAcademicStatistics();
+    printCourseStatistics();
+    printLearningStatistics();
+}
+
+printDashboard();

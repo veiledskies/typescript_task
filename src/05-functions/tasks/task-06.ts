@@ -26,22 +26,59 @@ const sales = [
 ];
 
 function calculateTotalSales(sales: number[]): number {
-  return sales.reduce((total, amount) => total + amount, 0);
+    let total = 0;
+
+    for (let i = 0; i < sales.length; i++) {
+        total = total + sales[i];
+    }
+
+    return total;
 }
 
 function findHighestTransaction(sales: number[]): number {
-  return Math.max(...sales);
+    let highest = sales[0];
+
+    for (let i = 0; i < sales.length; i++) {
+        if (sales[i] > highest) {
+            highest = sales[i];
+        }
+    }
+
+    return highest;
 }
 
 function findLowestTransaction(sales: number[]): number {
-  return Math.min(...sales);
+    let lowest = sales[0];
+
+    for (let i = 0; i < sales.length; i++) {
+        if (sales[i] < lowest) {
+            lowest = sales[i];
+        }
+    }
+
+    return lowest;
 }
 
 function calculateAverageSale(sales: number[]): number {
-  const total = calculateTotalSales(sales);
-  return total / sales.length;
+    let total = calculateTotalSales(sales);
+
+    return total / sales.length;
 }
 
 function countLargeTransactions(sales: number[], minimumAmount: number): number {
-  return sales.filter(amount => amount > minimumAmount).length;
+    let count = 0;
+
+    for (let i = 0; i < sales.length; i++) {
+        if (sales[i] > minimumAmount) {
+            count++;
+        }
+    }
+
+    return count;
 }
+
+console.log("Total Sales: " + calculateTotalSales(sales));
+console.log("Highest Transaction: " + findHighestTransaction(sales));
+console.log("Lowest Transaction: " + findLowestTransaction(sales));
+console.log("Average Sale: " + calculateAverageSale(sales));
+console.log("Large Transactions: " + countLargeTransactions(sales, 500000));
